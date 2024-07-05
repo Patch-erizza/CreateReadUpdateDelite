@@ -1,0 +1,64 @@
+
+<h1>Список пользователей</h1>
+<button (click)="addUser()">Новый пользователь</button>
+<table>
+
+  <tr>
+    <th>Id</th>
+    <th>Имя</th>
+    <th>Возраст</th>
+    <th></th>
+  </tr>
+
+  @for (user of users; track $index) {
+  <tr>
+    <ng-template [ngTemplateOutlet]="loadTemplate(user)" [ngTemplateOutletContext]="{$implicit: user}"></ng-template>
+  </tr>
+  }
+<!-- c помощью параметра $implicit задается передаваемый объект-->
+</table>
+
+<div>{{statusMessage}}</div>
+
+<!--// ОПРЕДЕЛЯЕМ ШАБЛОН ДЛЯ ЧТЕНИЯ-->
+<ng-template #readOnlyTemplate let-user>
+  <td>{{user.id}}</td>
+  <td>{{user.name}}</td>
+  <td>{{user.age}}</td>
+  <td>
+    <button (click)="editUser(user)">Изменить</button>
+    <button (click)="deleteUser(user)">Удалить</button>
+  </td>
+</ng-template>
+
+<!--// ОПРЕДЕЛЯЕМ ШАБЛОН ДЛЯ РЕДАКТИРОВАНИЯ-->
+<ng-template #editTemplate>
+  <ng-container *ngIf="editedUser as editedUser">
+  <td>
+    <input [(ngModel)]="editedUser.id" readonly disabled />
+  </td>
+  <td>
+    <input [(ngModel)]="editedUser.name" />
+  </td>
+  <td>
+    <input type="number" [(ngModel)]="editedUser.age" />
+  </td>
+  <td>
+    <button (click)="saveUser()">Сохранить</button>
+    <button (click)="cancel()">Отменить</button>
+  </td>
+  </ng-container>
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+

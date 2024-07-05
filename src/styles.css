@@ -1,0 +1,36 @@
+body {
+  font-family: "Open Sans";
+}
+table {
+  border-collapse: collapse;
+  border: 3px dimgrey;
+}
+td, th {
+  border: 3px dimgrey;
+  padding: 3px;
+  min-width: 180px;
+  max-width: 200px;
+  font-size: 20px;
+  align-items: center;
+}
+input {
+  width: 90%;
+  padding: 10px;
+}
+button {
+  border: 3px slategray;
+  background-color: lightskyblue;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+button:hover {
+  cursor: pointer;
+  box-shadow: 3px 5px gray;
+}
+div {
+  font-size: 15px;
+  color: cornflowerblue;
+  font-style: italic;
+}
